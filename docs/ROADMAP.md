@@ -2,8 +2,8 @@
 
 ## Phase 1: Environment & Configuration (Current Step)
 **Goal:** Establish a stable development environment to ensure reproducibility.
-* [x] **Project Directory:** Create `Retail_Sales_Analysis` folder with `/output` sub-folder.
-* [x] **Virtual Environment:** Set up and activate Python `venv`.
+* [ ] **Project Directory:** Create `Retail_Sales_Analysis` folder with `/output` sub-folder.
+* [ ] **Virtual Environment:** Set up and activate Python `venv`.
 * [ ] **Dependencies:** Install `pandas`, `sqlalchemy`, `matplotlib`, `seaborn`.
 * [ ] **Configuration Script:** Create `analysis_pipeline.py` with library imports and file path constants (`RAW_DATA_PATH`, `DB_PATH`).
 

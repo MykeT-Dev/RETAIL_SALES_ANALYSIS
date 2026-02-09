@@ -5,13 +5,48 @@
 ---
 
 ## Project Overview
-This project simulates a real-world Data Engineering workflow. The goal was to take raw, messy retail sales data and convert it into actionable business insights.
+This project simulates a real-world Data Engineering workflow. The goal was to take raw, messy retail sales data and convert it into actionable business insights for an executive team.
+
+* **Role:** Data Engineer / Analyst
+* **Goal:** Identify Q4 marketing trends from unstructured transaction records.
+* **Data Source:** Public retail sales dataset (Source: Kaggle).
 
 **Key Accomplishments:**
 * **ETL Pipeline:** Built a robust extraction, transformation, and loading process.
 * **Data Quality:** Implemented automated cleaning logic to handle missing values and correct data types.
 * **Database Integration:** Designed a persistent SQLite database storage layer.
 * **Automated Reporting:** Generated trend analysis charts using Matplotlib.
+
+---
+
+## Architecture & Design
+The pipeline follows a standard **ETL (Extract, Transform, Load)** architecture, designed to ensure data integrity and reproducibility.
+
+### Data Flow Diagram (DFD)
+![Data Flow Diagram](docs/DFD.jpg)
+
+### Database Schema (ERD)
+![Entity Relationship Diagram](docs/ERD.jpg)
+
+*See full documentation: [Project Specification](docs/project_spec.pdf) | [Implementation Roadmap](docs/ROADMAP.md)*
+
+---
+
+## Key Insights & Visualizations
+After processing **11,000+ transaction records**, the analysis revealed the following trends:
+
+### 1. Monthly Sales Trend
+Sales have remained relatively steady throughout the fiscal year, with no significant seasonality detected.
+![Monthly Sales Trend](output/monthly_sales_trend.png)
+
+### 2. Top Performing Products
+"Beverages" and "Milk Products" are the highest volume drivers, suggesting a focus for Q4 inventory.
+![Top Selling Items](output/top_selling_items.png)
+
+### 3. Sales Channel Distribution
+Online sales ($749k) are slightly outperforming In-Store sales ($723k), indicating a need for continued digital marketing investment.
+
+---
 
 ## Tech Stack
 * **Language:** Python 3.11
@@ -20,45 +55,28 @@ This project simulates a real-world Data Engineering workflow. The goal was to t
 * **Visualization:** Matplotlib
 * **Version Control:** Git / GitHub
 
-## Architecture
-The pipeline follows a standard ETL (Extract, Transform, Load) architecture:
-1.  **Ingest:** Read raw CSV data (`sales_data_raw.csv`).
-2.  **Clean:** Remove nulls, cast types, and handle missing business logic.
-3.  **Load:** Save structured data into `sales_data.db`.
-4.  **Analyze & Visualize:** Aggregate metrics and generate PNG reports.
-
-*(See [ARCHITECTURE.md](ARCHITECTURE.md) for the detailed system diagram)*
-
-## Key Insights
-After processing **11,000+ transaction records**, the analysis revealed:
-* **Sales Trends:** Monthly sales have remained steady, with a slight dip in early 2025.
-* **Top Products:** "Beverages" and "Milk Products" are the highest volume categories.
-* **Location Analysis:** Online sales ($749k) are slightly outperforming In-Store sales ($723k).
+---
 
 ## How to Run This Project
 *Note: These steps are for setting up the project on a new machine.*
 
 **1. Clone the repository**
-```bash
-git clone [https://github.com/MykeT-Dev/Retail_Sales_Analysis.git](https://github.com/MykeT-Dev/Retail_Sales_Analysis.git)
-cd Retail_Sales_Analysis
-```
+
+    git clone https://github.com/MykeT-Dev/Retail_Sales_Analysis.git
+    cd Retail_Sales_Analysis
 
 **2. Create a Virtual Environment**
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 **3. Install Dependencies**
-```bash
-pip install pandas sqlalchemy matplotlib
-```
+
+    pip install -r requirements.txt
 
 **4. Run the Pipeline**
-```bash
-python analysis_pipeline.py
-```
+
+    python analysis_pipeline.py
 
 **5. Check the Results**
 * **Database:** `sales_data.db` (Use a SQLite viewer to inspect)
