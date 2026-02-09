@@ -184,7 +184,7 @@ print(f'Saved: {OUTPUT_DIR}/top_5_items.png')
 # 3. Sales by Location (Pie Chart)
 plt.figure(figsize=(8, 8))
 location_sales.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff'])
-plt.title('Sales Distrobution: Online vs In-Store', fontsize=16)
+plt.title('Sales Distribution: Online vs In-Store', fontsize=16)
 plt.ylabel('')  # Hide the y-label for a cleaner look
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/sales_by_location.png')

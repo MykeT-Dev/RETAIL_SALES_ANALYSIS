@@ -1,16 +1,15 @@
-# Ignore the virtual environment
-venv/
+# Python artifacts
 __pycache__/
+*.py[cod]
 
-# Ignore output files
-*.png
+# Virtual Environment
+venv/
+env/
+
+# Database (Generated)
 *.db
+*.sqlite3
 
-# Ignore system files
+# OS generated files
 .DS_Store
-
-# Ignore raw data
-*.csv
-
-# ignore the entire output directory
-output/
+Thumbs.db
