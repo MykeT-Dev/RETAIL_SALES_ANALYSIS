@@ -139,3 +139,55 @@ try:
 
 except Exception as e:
     print(f"Error saving to database: {e}")
+
+
+#VISUALIZE DATA
+import matplotlib.pyplot as plt
+
+print("\n--- Visualizing Data ---")
+
+# Set the style to be clean and professional
+# (If 'ggplot' doesn't work for you, you can remove this line or choose another style)
+plt.style.use('ggplot')
+
+# --- Filter out the incomplete last month for a cleaner visualization ---
+# we use .iloc[:-1] to exclude the last row which is likely incomplete
+monthly_sales = monthly_sales.iloc[:-1]
+print("\nNote: The last month has been excluded from the monthly sales trend visualization to avoid skewing the results with incomplete data.")
+
+# 1. Monthly Sales Trend (Line Chart)
+plt.figure(figsize=(10, 6))
+
+#convert the 'Month' column back to datetime for plotting
+monthly_sales.index = pd.to_datetime(monthly_sales.index.astype(str))
+monthly_sales.plot(kind='line', marker='o', color='blue', linewidth=2)
+plt.title('Monthly Sales Trend', fontsize=16)
+plt.xlabel('Month', fontsize=12)
+plt.ylabel('Total Sales ($)', fontsize=12)
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig(f'{OUTPUT_DIR}/monthly_sales_trend.png')
+print(f'\nSaved: {OUTPUT_DIR}/monthly_sales_trend.png')
+
+# 2. Top 5 Items by Quantity Sold (Bar Chart)
+plt.figure(figsize=(10, 6))
+top_items.plot(kind='bar', color='green')
+plt.title('Top 5 Best-Selling Items by Quantity', fontsize=16)
+plt.xlabel('Item', fontsize=12)
+plt.ylabel('Quantity Sold', fontsize=12)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig(f'{OUTPUT_DIR}/top_5_items.png')
+print(f'Saved: {OUTPUT_DIR}/top_5_items.png')
+
+# 3. Sales by Location (Pie Chart)
+plt.figure(figsize=(8, 8))
+location_sales.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff'])
+plt.title('Sales Distrobution: Online vs In-Store', fontsize=16)
+plt.ylabel('')  # Hide the y-label for a cleaner look
+plt.tight_layout()
+plt.savefig(f'{OUTPUT_DIR}/sales_by_location.png')
+print(f'Saved: {OUTPUT_DIR}/sales_by_location.png')
+
+print("\n--- Pipeline Completed Successfully! ---")
