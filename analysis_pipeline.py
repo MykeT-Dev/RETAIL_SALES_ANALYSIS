@@ -93,3 +93,49 @@ location_sales = df.groupby('Location')['Total Spent'].sum().sort_values(ascendi
 
 print("\nSales by Location:")
 print(location_sales)
+
+# LOAD TO DATABASE
+print("\n--- Saving to Database ---")
+
+# FIX: Convert 'Month' from a Period object to a String so SQLite can understand it
+df['Month'] = df['Month'].astype(str)
+
+# 1. Create the Database Engine
+engine = db.create_engine(f'sqlite:///{DB_PATH}')
+
+try:
+    # 2. Write the DataFrame to SQL
+    df.to_sql('sales', engine, if_exists='replace', index=False)
+    
+    print(f"Data successfully saved to '{DB_PATH}'")
+    
+    # 3. Verify by Querying
+    with engine.connect() as connection:
+        result = connection.execute(db.text("SELECT COUNT(*) FROM sales"))
+        count = result.scalar()
+        print(f"Database Row Count Verification: {count}")
+
+except Exception as e:
+    print(f"Error saving to database: {e}")# LOAD TO DATABASE
+print("\n--- Saving to Database ---")
+
+# FIX: Convert 'Month' from a Period object to a String so SQLite can understand it
+df['Month'] = df['Month'].astype(str)
+
+# 1. Create the Database Engine
+engine = db.create_engine(f'sqlite:///{DB_PATH}')
+
+try:
+    # 2. Write the DataFrame to SQL
+    df.to_sql('sales', engine, if_exists='replace', index=False)
+    
+    print(f"Data successfully saved to '{DB_PATH}'")
+    
+    # 3. Verify by Querying
+    with engine.connect() as connection:
+        result = connection.execute(db.text("SELECT COUNT(*) FROM sales"))
+        count = result.scalar()
+        print(f"Database Row Count Verification: {count}")
+
+except Exception as e:
+    print(f"Error saving to database: {e}")
