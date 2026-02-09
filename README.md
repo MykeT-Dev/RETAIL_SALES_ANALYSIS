@@ -9,7 +9,7 @@ This project simulates a real-world Data Engineering workflow. The goal was to t
 
 * **Role:** Data Engineer / Analyst
 * **Goal:** Identify Q4 marketing trends from unstructured transaction records.
-* **Data Source:** Public retail sales dataset (Source: Kaggle).
+* **Data Source:** Public retail sales dataset (Source: https://www.kaggle.com/code/mahmoudredagamail/retail-store-sales-dirty-for-data-cleaning/input)
 
 **Key Accomplishments:**
 * **ETL Pipeline:** Built a robust extraction, transformation, and loading process.
@@ -41,10 +41,25 @@ Sales have remained relatively steady throughout the fiscal year, with no signif
 
 ### 2. Top Performing Products
 "Beverages" and "Milk Products" are the highest volume drivers, suggesting a focus for Q4 inventory.
-![Top Selling Items](output/top_selling_items.png)
+![Top Selling Items](output/top_5_items.png)
 
 ### 3. Sales Channel Distribution
 Online sales ($749k) are slightly outperforming In-Store sales ($723k), indicating a need for continued digital marketing investment.
+
+---
+
+## Interactive Dashboard
+This project includes a local **Streamlit** app for real-time data exploration, allowing users to filter by region and date to uncover specific trends.
+
+| **Executive Overview** | **Data Inspection & Filtering** |
+|:---:|:---:|
+| ![Main View](docs/dash_hero.jpg) | ![Feature View](docs/dash_drilldown.jpg) |
+| *High-level KPIs and trends for the full dataset.* | *Drill-down capabilities showing **Date Presets** and **Row-Level Data Inspection**.* |
+
+**Key Features:**
+* **Dynamic Filtering:** Toggle between specific store locations and date ranges (e.g., "Last 6 Months").
+* **Real-Time KPIs:** Revenue, transaction counts, and average order value update instantly.
+* **Data Drill-Down:** Inspect raw row-level data directly within the UI.
 
 ---
 
@@ -52,7 +67,7 @@ Online sales ($749k) are slightly outperforming In-Store sales ($723k), indicati
 * **Language:** Python 3.11
 * **Data Manipulation:** Pandas
 * **Database:** SQLite / SQLAlchemy
-* **Visualization:** Matplotlib
+* **Visualization:** Matplotlib / Streamlit
 * **Version Control:** Git / GitHub
 
 ---
@@ -74,13 +89,19 @@ Online sales ($749k) are slightly outperforming In-Store sales ($723k), indicati
 
     pip install -r requirements.txt
 
-**4. Run the Pipeline**
+**4. Run the ETL Pipeline**
+(This cleans the data and populates the database)
 
     python analysis_pipeline.py
 
-**5. Check the Results**
+**5. Launch the Dashboard**
+(This opens the interactive app in your browser)
+
+    streamlit run dashboard.py
+
+**6. Check the Results**
 * **Database:** `sales_data.db` (Use a SQLite viewer to inspect)
-* **Charts:** Open the `output/` folder to see generated graphs.
+* **Charts:** Open the `output/` folder to see generated static graphs.
 
 ---
 **Author:** Myke Turza
