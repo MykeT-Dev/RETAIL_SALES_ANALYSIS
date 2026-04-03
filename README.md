@@ -4,6 +4,20 @@
 
 ---
 
+## Interactive Dashboard (UI)
+
+This project includes a Streamlit-based dashboard for real-time data exploration.
+
+Features:
+* Filter sales by region and date
+* View trends and product performance
+* Drill down into transaction-level data
+
+Run locally:
+streamlit run dashboard.py
+
+---
+
 ## Project Overview
 This project simulates a real-world Data Engineering workflow. The goal was to take raw, messy retail sales data and convert it into actionable business insights for an executive team.
 
